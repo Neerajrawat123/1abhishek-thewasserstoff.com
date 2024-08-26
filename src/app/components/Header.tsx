@@ -10,7 +10,7 @@ align-items: center;
 `
 
 const LogoContainer= styled.div`
-width: 15%;
+padding: 0 10px;
 color: white;
 display: flex;
 justify-content: center;

@@ -4,7 +4,8 @@ import productSlice from '../lib/features/product/productSlice'
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      product: productSlice
+      product: productSlice,
+      
     },
   })
 }

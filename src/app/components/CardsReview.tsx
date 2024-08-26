@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
 import styled from 'styled-components'
-import { RiStarSFill } from "react-icons/ri";
 import Stars from './Stars';
 
 const Wrapper = styled.div`
+padding: 0 5px;
 
 `
 
@@ -31,14 +31,26 @@ padding: 20px 0;
 font-size: 1.2rem;
 line-height: 1.2rem;`
 
+interface Review  {
+  id: number;
+  reviewerName: string;
+  rating: number;
+  avatarUrl: string;
+  reviewText: string;
+  date: Date
+ review_images: string[];
 
-function CardsReview({review}) {
+
+}
+
+
+function CardsReview({review}:{review: Review}) {
     const { id, rating, avatarUrl, date, reviewText, reviewerName} = review
   return (
     <Wrapper>
         <Profile>
             <ImgWrapper>
-            <Image src={avatarUrl} width={40} height={40} />
+            <Image src={avatarUrl} width={40} height={40} alt='image-product'/>
             </ImgWrapper>
             <Name>
 {reviewerName}

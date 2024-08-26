@@ -2,6 +2,17 @@ import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
+interface Product  {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  stock: number;
+  main_image: string;
+ other_images: string[];
+
+
+}
 
 
 const Wrapper = styled(Link)`
@@ -11,6 +22,12 @@ display: flex;
 flex-direction: column;
 width:23%;
 cursor: pointer;
+
+ @media only screen and (max-width: 768px) 
+  {
+    width: 100%;
+
+  }
 `
 
 const Img = styled.img`
@@ -72,9 +89,8 @@ border-radius: 10px;
 padding: 4px 8px;`
 
 
-function ProductsCard({item}) {
-    console.log('item',item)
-    const {id,name,description,price,stars,brand,main_image} = item
+function ProductsCard({item}: {item: Product}) {
+    const {id,name,description,price,main_image} = item
 
    
   return (
@@ -84,14 +100,12 @@ function ProductsCard({item}) {
         </ImgWrapper>
         <InfoSec>
             <NameWrapper>
-                <Name>{brand}</Name>
                 <Brand></Brand>
                 <span>{name}</span>
             </NameWrapper>
             <Description>{description}</Description>
             <PriceSec>
                 <Price>{price}</Price>
-                <Stars>{stars} stars</Stars>
             </PriceSec>
 
 

@@ -9,9 +9,6 @@ const NextArrow = styled(SampleNextArrow)`
 width: 3rem;
 height: 3rem;
 
-
-
-
 &:before {
 color: green;
 font-size: 3rem;} `
@@ -20,8 +17,6 @@ font-size: 3rem;} `
 const PrevArrow = styled(SamplePrevArrow)`
 width: 3rem;
 height: 3rem;
-
-
 
 
 &:before {
@@ -33,7 +28,7 @@ const Slide = styled(Slider)`
 margin: 0 1rem 0 2rem;}
 `
 
-function SampleNextArrow(props) {
+function SampleNextArrow(props: any) {
   console.log(props)
   const { className, style, onClick } = props;
   return (
@@ -45,18 +40,22 @@ function SampleNextArrow(props) {
   );
 }
 
-function SamplePrevArrow(props) {
+function SamplePrevArrow(props: any) {
   const { className, style, onClick } = props;
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "green" }}
+      style={{ ...style, display: "block",}}
       onClick={onClick}
     />
   );
 }
 
-export default function Carousal({children} : ReactNode) {
+interface CarousalProps {
+  children: React.ReactNode;
+}
+
+export default function Carousal({children}: CarousalProps  ) {
   var settings = {
     dots: true,
     infinite: false,
@@ -79,9 +78,9 @@ export default function Carousal({children} : ReactNode) {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
         }
       },
       {

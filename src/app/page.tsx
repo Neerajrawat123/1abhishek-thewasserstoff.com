@@ -25,7 +25,8 @@ interface Product  {
 
 
 const MainWrapper = styled.main`
-  width: 100%;
+  width: 100%vw;
+  overflow: none;
 `;
 
 const ProductsWrapper = styled.div`
@@ -36,14 +37,33 @@ height: 100vh;
 
   gap: 2rem;
   padding: 18px 30px;
+
+  @media only screen and (max-width: 768px) 
+  {
+    display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  }
 `;
+
+const ErrorMsg = styled.div`
+font-size: 3rem;
+text-align: center;
+margin-top: 5rem;`
+
+const LoadingText = styled.p`
+font-size: 3rem;
+font-weight: 800;
+text-align: center;
+margin-top: 5rem;`
+
 
 export default function Home() {
   const [data, setData ] = useState< Product[]>([])
   const [error ,setError ]= useState<Error | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
 
-  axios.defaults.baseURL = 'https://ca312691e93376c0a86e.free.beeceptor.com/'
+  axios.defaults.baseURL = process.env.NEXT_PUBLIC_PRODUCT_URL
 
 
   useEffect(() => {
@@ -63,8 +83,8 @@ export default function Home() {
   
   }, [])
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (loading) return <LoadingText>Loading...</LoadingText>;
+  if (error) return <ErrorMsg>Error: {error.message}</ErrorMsg>;
   
   return (
 

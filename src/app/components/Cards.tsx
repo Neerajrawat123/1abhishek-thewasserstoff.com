@@ -11,6 +11,9 @@ display: flex;
 flex-direction: column;
 align-items: center;
 cursor: pointer;
+
+&:hover{
+transform: scale(1.03)}
 `
 
 const Img = styled.img`
@@ -74,6 +77,16 @@ color: white;
 border-radius: 10px;
 padding: 4px 8px;`
 
+const Button = styled.button`
+width: 90%;
+margin-top: 1rem;
+border-radius: 6px;
+border: none;
+color: white;
+background-color: blue;
+padding: 5px 10px;
+font-size: 1.2rem;`
+
 
 function Card({item}) {
     const {id,name,description,price,stars,brand,img} = item
@@ -93,6 +106,7 @@ function Card({item}) {
                 <Price>{price}</Price>
                 <Stars>{stars} stars</Stars>
             </PriceSec>
+            <Button>Add to cart</Button>
 
 
         </InfoSec>
